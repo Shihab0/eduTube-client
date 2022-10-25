@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
+import Footer from '../Shared/Footer';
 import Header from '../Shared/Header';
 import LeftSideNav from '../Shared/LeftSideNav';
 
@@ -14,6 +15,7 @@ const Main = () => {
                     <Col lg="8"> <Outlet></Outlet> </Col>
                 </Row>
             </Container>
+            <Footer></Footer>
         </div>
     );
 };

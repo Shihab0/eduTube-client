@@ -4,10 +4,13 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
-import user from '../assest/img/user-512.webp';
+import userPhoto from '../assest/img/user-512.webp';
 import { FcReading } from "react-icons/fc";
+import { useContext } from 'react';
+import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
+    const { user } = useContext(AuthContext);
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
@@ -31,14 +34,17 @@ const Header = () => {
                     </Nav>
                     <Nav>
                         <Nav.Link>
-                        <Link className='text-decoration-none' to='/register'>Register</Link>
+                            <Link className='text-decoration-none' to='/register'>Register</Link>
                         </Nav.Link>
                         <Nav.Link>
                             <Link className='text-decoration-none' to='/login'>Login</Link>
                         </Nav.Link>
                         <Nav.Link>
+                            <p>{user.displayName}</p>
+                        </Nav.Link>
+                        <Nav.Link>
                             <Link className='text-decoration-none' to='/login'>
-                                <img style={{width: '35px'}} roundedCircle={true} src={user} alt="" />
+                                <img style={{ width: '25px' }} roundedCircle={true} src={userPhoto} alt="" />
                             </Link>
                         </Nav.Link>
                     </Nav>
