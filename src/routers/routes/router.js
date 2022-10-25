@@ -3,6 +3,8 @@ import Main from "../../layouts/Main";
 import AllCourse from "../../pages/AllCourse/AllCourse";
 import Course from "../../pages/Course/Course";
 import Home from "../../pages/Home/Home";
+import Login from "../../RegisterLogin/Login";
+import Register from "../../RegisterLogin/Register";
 
 
 
@@ -31,5 +33,13 @@ export const router = createBrowserRouter([
                 loader: ({params}) => fetch(`http://localhost:5000/course/${params.id}`)
             }
         ]
+    },
+    {
+        path: '/login',
+        element: <Login></Login>
+    },
+    {
+        path: '/register',
+        element: <Register></Register>    
     }
 ]);
