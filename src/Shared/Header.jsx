@@ -8,6 +8,7 @@ import userPhoto from '../assest/img/user-512.webp';
 import { FcReading } from "react-icons/fc";
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
+import Image from 'react-bootstrap/Image'
 
 const Header = () => {
     const { user } = useContext(AuthContext);
@@ -37,14 +38,17 @@ const Header = () => {
                             <Link className='text-decoration-none' to='/register'>Register</Link>
                         </Nav.Link>
                         <Nav.Link>
-                            <Link className='text-decoration-none' to='/login'>Login</Link>
+                            {
+                                user?.uid ? <><Link className='text-decoration-none' to='/login'>Logout</Link></>
+                                : <><Link className='text-decoration-none' to='/login'>Login</Link></>
+                            }
                         </Nav.Link>
                         <Nav.Link>
-                            <p>{user.displayName}</p>
+                            <p>{user?.displayName}</p>
                         </Nav.Link>
                         <Nav.Link>
                             <Link className='text-decoration-none' to='/login'>
-                                <img style={{ width: '25px' }} roundedCircle={true} src={userPhoto} alt="" />
+                                {user?.photoURL ? <><Image style={{ width: '25px' }} roundedCircle src={user?.photoURL} alt="" /></> : <><Image style={{ width: '25px' }} roundedCircle={true} src={userPhoto} alt="" /></>}
                             </Link>
                         </Nav.Link>
                     </Nav>

@@ -8,16 +8,19 @@ import Header from '../Shared/Header';
 
 const Register = () => {
     return (
-        <div style={{ background: '#ecf3fd', height: '100vh' }}>
+        <div style={{ background: '#ecf3fd', minHeight: '100vh' }}>
             <Header></Header>
             <Form className='mx-auto mt-5' style={{ width: '350px' }}>
                 <h3 className='text-center mb-3 text-warning'><FcReading /> Register to Edu-Tube</h3>
+
+                <Form.Group className="mb-3" controlId="formBasicName">
+                    <Form.Label>Your Name</Form.Label>
+                    <Form.Control type="text" placeholder="Enter Name" />
+                </Form.Group>
+
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
