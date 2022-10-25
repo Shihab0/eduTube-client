@@ -1,13 +1,15 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { FcReading } from 'react-icons/fc';
 import Header from '../Shared/Header';
 
 const Register = () => {
     return (
-        <div>
+        <div style={{background: '#ecf3fd', height: '100vh'}}>
             <Header></Header>
             <Form className='mx-auto mt-5' style={{width: '350px'}}>
+                <h3 className='text-center mb-3 text-warning'><FcReading/> Register to Edu-Tube</h3>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" />

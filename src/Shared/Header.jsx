@@ -4,12 +4,14 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
+import user from '../assest/img/user-512.webp';
+import { FcReading } from "react-icons/fc";
 
 const Header = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">Edu-Tube</Navbar.Brand>
+                <Navbar.Brand><span className='fs-4 text-warning'><FcReading /> Edu-Tube </span></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
@@ -33,6 +35,11 @@ const Header = () => {
                         </Nav.Link>
                         <Nav.Link>
                             <Link className='text-decoration-none' to='/login'>Login</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link className='text-decoration-none' to='/login'>
+                                <img style={{width: '35px'}} roundedCircle={true} src={user} alt="" />
+                            </Link>
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
