@@ -1,12 +1,27 @@
-import React from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { FcReading } from 'react-icons/fc';
+import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 import Footer from '../Shared/Footer';
 import Header from '../Shared/Header';
 
 const Register = () => {
+
+    const { providerLogin } = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
+
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(err => console.error(err))
+    }
+
     return (
         <div style={{ background: '#ecf3fd', minHeight: '100vh' }}>
             <Header></Header>
@@ -34,7 +49,7 @@ const Register = () => {
                     Register
                 </Button> <br />
                 <p className='text-center text-muted mb-0'>Or</p>
-                <Button variant="warning" size="md" style={{ width: '100%' }}>
+                <Button onClick={handleGoogleSignIn} variant="warning" size="md" style={{ width: '100%' }}>
                     <FaGoogle />  Register With Google
                 </Button> <br />
                 <p className='text-center text-muted mb-0'>Or</p>
