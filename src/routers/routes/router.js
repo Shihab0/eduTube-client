@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Route404 from "../../components/Route404/Route404";
 import Main from "../../layouts/Main";
 import AllCourse from "../../pages/AllCourse/AllCourse";
 import Blogs from "../../pages/Blogs/Blogs";
@@ -63,5 +64,9 @@ export const router = createBrowserRouter([
     {
         path: '/blogs',
         element: <Blogs></Blogs>
+    },
+    {
+        path: '*',
+        element: <Route404 />
     }
 ]);
