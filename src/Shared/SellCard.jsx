@@ -6,10 +6,17 @@ import { GiClick, GiTeacher } from 'react-icons/gi';
 import { useLoaderData } from 'react-router-dom';
 import { FaBook, FaUserGraduate } from 'react-icons/fa';
 import { Button } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 
 const SellCard = () => {
     const handleAdmit = () => {
-        alert('admitted')
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Congratulation, You are admitted.',
+            showConfirmButton: false,
+            timer: 1500
+          })
     }
     const { subject, price, teacher_name, picture, sell, description } = useLoaderData();
     return (

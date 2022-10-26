@@ -8,7 +8,7 @@ import userPhoto from '../assest/img/user-512.webp';
 import { FcReading } from "react-icons/fc";
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
-import Image from 'react-bootstrap/Image'
+import Image from 'react-bootstrap/Image';
 
 const Header = () => {
 
@@ -20,6 +20,7 @@ const Header = () => {
     }
 
     const { user } = useContext(AuthContext);
+
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
@@ -58,7 +59,7 @@ const Header = () => {
                         </Nav.Link>
                         <Nav.Link>
                             <Link className='text-decoration-none' to='/login'>
-                                {user?.photoURL ? <><Image style={{ width: '25px' }} roundedCircle src={user?.photoURL} alt="" /></> : <><Image style={{ width: '25px' }} roundedCircle={true} src={userPhoto} alt="" /></>}
+                                {user?.photoURL ? <><Image title={user.displayName} style={{ width: '25px' }} roundedCircle src={user?.photoURL} alt="" /></> : <><Image style={{ width: '25px' }} roundedCircle={true} src={userPhoto} alt="" /></>}
                             </Link>
                         </Nav.Link>
                     </Nav>

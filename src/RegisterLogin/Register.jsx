@@ -26,12 +26,17 @@ const Register = () => {
     return (
         <div style={{ background: '#ecf3fd', minHeight: '100vh' }}>
             <Header></Header>
-            <Form className='mx-auto mt-5' style={{ width: '350px' }}>
+            <Form className='mx-auto mt-4' style={{ width: '350px' }}>
                 <h3 className='text-center mb-3 text-warning'><FcReading /> Register to Edu-Tube</h3>
 
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label>Your Name</Form.Label>
                     <Form.Control type="text" placeholder="Enter Name" />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicPhoto">
+                    <Form.Label>Photo URL</Form.Label>
+                    <Form.Control type="text" placeholder="Photo url" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">

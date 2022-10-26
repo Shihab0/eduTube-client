@@ -38,13 +38,12 @@ const Login = () => {
     return (
         <div style={{ background: '#ecf3fd', minHeight: '100vh' }}>
             <Header></Header>
-            <Form className='mx-auto mt-5' style={{ width: '350px' }}>
+            <Form className='mx-auto mt-4' style={{ width: '350px' }}>
                 <h3 className='text-center mb-3 text-warning'><FcReading /> Login to Edu-Tube</h3>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" />
                     <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
                     </Form.Text>
                 </Form.Group>
 
