@@ -11,42 +11,69 @@ import Header from '../Shared/Header';
 
 const Register = () => {
 
-    const { providerLogin } = useContext(AuthContext);
+    const { providerLogin, registerWithEmailPass, updateUserProfile } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const photoURL = form.photoUrl.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        // console.log(name,photoURL,email,password);
+        // handleRegister(email,password);
+        registerWithEmailPass(email, password)
+            .then(result => {
+                const user = result.user;
+                handleUpdateUserProfile(name, photoURL);
+                console.log(user);
+            })
+            .catch(err => console.error(err))     
+    }
+
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+    }
 
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-        })
-        .catch(err => console.error(err))
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(err => console.error(err))
     }
+
 
     return (
         <div style={{ background: '#ecf3fd', minHeight: '100vh' }}>
             <Header></Header>
-            <Form className='mx-auto mt-4' style={{ width: '350px' }}>
+            <Form onSubmit={handleSubmit} className='mx-auto mt-4' style={{ width: '350px' }}>
                 <h3 className='text-center mb-3 text-warning'><FcReading /> Register to Edu-Tube</h3>
 
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label>Your Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter Name" />
+                    <Form.Control name='name' type="text" placeholder="Enter Name" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPhoto">
                     <Form.Label>Photo URL</Form.Label>
-                    <Form.Control type="text" placeholder="Photo url" />
+                    <Form.Control name='photoUrl' type="text" placeholder="Photo url" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control name='email' type="email" placeholder="Enter email" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control name='password' type="password" placeholder="Password" />
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <p><small>Already have an account? <Link to='/Login'>Login here.</Link> </small></p>

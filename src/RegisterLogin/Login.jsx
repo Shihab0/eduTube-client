@@ -13,9 +13,24 @@ import Header from '../Shared/Header';
 
 const Login = () => {
 
-    const { providerLogin } = useContext(AuthContext);
+    const { providerLogin, logIn } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const gitProvider = new GithubAuthProvider();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        // console.log(name,photoURL,email,password);
+        // handleRegister(email,password);
+        logIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(err => console.error(err))     
+    }
 
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
@@ -38,18 +53,18 @@ const Login = () => {
     return (
         <div style={{ background: '#ecf3fd', minHeight: '100vh' }}>
             <Header></Header>
-            <Form className='mx-auto mt-4' style={{ width: '350px' }}>
+            <Form onSubmit={handleSubmit} className='mx-auto mt-4' style={{ width: '350px' }}>
                 <h3 className='text-center mb-3 text-warning'><FcReading /> Login to Edu-Tube</h3>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control name='email' type="email" placeholder="Enter email" />
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control name='password' type="password" placeholder="Password" />
                 </Form.Group>
                 <Form.Group className="mb-3">
                 <p><small>Already have an account? <Link to='/register'>Register here.</Link> </small></p>
