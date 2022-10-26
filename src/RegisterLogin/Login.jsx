@@ -1,11 +1,13 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { FcReading } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 import Footer from '../Shared/Footer';
 import Header from '../Shared/Header';
@@ -16,6 +18,11 @@ const Login = () => {
     const { providerLogin, logIn } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const gitProvider = new GithubAuthProvider();
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location?.state?.from?.pathname || '/';
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -28,27 +35,39 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                form.reset();
+                navigate(from,{replace: true});
             })
-            .catch(err => console.error(err))     
+            .catch(err => {
+                const errMsg = err.message;
+                setError(errMsg)
+                console.log(errMsg)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: errMsg,
+                  })
+            })
     }
 
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-        })
-        .catch(err => console.error(err))
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(err => console.error(err))
     }
 
     const handleGitLogin = () => {
         providerLogin(gitProvider)
-        .then(result => {
-            const user = result.user;
-            console.log(user)
-        })
-        .then(err => console.error(err))
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .then(err => console.error(err))
     }
+
 
     return (
         <div style={{ background: '#ecf3fd', minHeight: '100vh' }}>
@@ -67,7 +86,7 @@ const Login = () => {
                     <Form.Control name='password' type="password" placeholder="Password" />
                 </Form.Group>
                 <Form.Group className="mb-3">
-                <p><small>Already have an account? <Link to='/register'>Register here.</Link> </small></p>
+                    <p><small>Already have an account? <Link to='/register'>Register here.</Link> </small></p>
                 </Form.Group>
                 <Button style={{ width: '100%' }} variant="primary" type="submit">
                     Login

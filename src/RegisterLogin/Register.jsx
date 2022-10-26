@@ -28,6 +28,7 @@ const Register = () => {
                 const user = result.user;
                 handleUpdateUserProfile(name, photoURL);
                 console.log(user);
+                form.reset();
             })
             .catch(err => console.error(err))     
     }

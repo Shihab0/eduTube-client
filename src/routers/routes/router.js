@@ -6,6 +6,7 @@ import Home from "../../pages/Home/Home";
 import Login from "../../RegisterLogin/Login";
 import Register from "../../RegisterLogin/Register";
 import SellCard from "../../Shared/SellCard";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
 
@@ -45,7 +46,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/buy/:id',
-                element: <SellCard></SellCard>,
+                element: <PrivateRoute><SellCard></SellCard></PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:5000/buy/${params.id}`)
             }
         ]
