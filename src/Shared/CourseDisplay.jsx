@@ -2,11 +2,12 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { FaBook, FaChalkboardTeacher, FaUserGraduate } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 
 
 const CourseDisplay = ({ courseDisplay }) => {
-    const { subject, teacher_name, picture, description, sell } = courseDisplay;
+    const { _id, subject, teacher_name, picture, description, sell } = courseDisplay;
     return (
         <div className='mt-4'>
             <Card style={{ width: '18rem' }}>
@@ -18,7 +19,9 @@ const CourseDisplay = ({ courseDisplay }) => {
                        {description}
                     </Card.Text>
                     <small className='text-info'><i><FaUserGraduate />Total Student: {sell}</i></small>
-                    <Button className='mt-2 mx-5' variant="primary">Buy This Course</Button>
+                    <Button className='mt-2 mx-5' variant="primary">
+                        <Link className='text-white text-decoration-none' to={`/buy/${_id}`}>Buy This Course</Link>
+                    </Button>
                 </Card.Body>
             </Card>
         </div>
