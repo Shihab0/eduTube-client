@@ -26,8 +26,7 @@ const SellCard = () => {
                 <Card.Body>
                     <Card.Title className='text-center text-danger'><span className='fw-bold'><MdSell /> Price:</span> ${price}</Card.Title>
                     <Card.Text>
-                        Some quick example text to build on the card title and make up the
-                        bulk of the card's content.
+                        {description}
                     </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">

@@ -8,7 +8,7 @@ const LeftSideNav = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/course')
+        fetch('https://edu-tube-server-side.vercel.app/course')
             .then(res => res.json())
             .then(data => setCategories(data));
     }, []);

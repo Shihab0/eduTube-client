@@ -30,17 +30,7 @@ const Header = () => {
                     <Nav className="me-auto">
                         <Nav.Link><Link className='text-decoration-none' to='/home'>Home</Link></Nav.Link>
                         <Nav.Link><Link className='text-decoration-none' to='/allCourse'>Course</Link></Nav.Link>
-                        <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">
-                                Another action
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">
-                                Separated link
-                            </NavDropdown.Item>
-                        </NavDropdown>
+                        <Nav.Link><Link className='text-decoration-none' to='/blogs'>Blogs</Link></Nav.Link> 
                     </Nav>
                     <Nav>
                         <Nav.Link>

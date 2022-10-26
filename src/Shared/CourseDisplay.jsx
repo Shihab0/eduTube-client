@@ -16,7 +16,9 @@ const CourseDisplay = ({ courseDisplay }) => {
                     <Card.Title className='mb-0'><FaBook></FaBook> {subject}</Card.Title>
                    <p className='text-muted mb-0'><small><FaChalkboardTeacher></FaChalkboardTeacher> Teacher Name:  {teacher_name}</small></p>
                     <Card.Text className='mb-1'>
-                       {description}
+                       {
+                          description.length > 100 ?  <>{description.slice(0,100) + '....'} </> : <>{description}</>
+                       }
                     </Card.Text>
                     <small className='text-info'><i><FaUserGraduate />Total Student: {sell}</i></small>
                     <Button className='mt-2 mx-5' variant="primary">
