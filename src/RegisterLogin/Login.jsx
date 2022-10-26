@@ -1,10 +1,11 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { FcReading } from 'react-icons/fc';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 import Footer from '../Shared/Footer';
 import Header from '../Shared/Header';
@@ -14,6 +15,7 @@ const Login = () => {
 
     const { providerLogin } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
+    const gitProvider = new GithubAuthProvider();
 
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
@@ -22,6 +24,15 @@ const Login = () => {
             console.log(user);
         })
         .catch(err => console.error(err))
+    }
+
+    const handleGitLogin = () => {
+        providerLogin(gitProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user)
+        })
+        .then(err => console.error(err))
     }
 
     return (
@@ -41,8 +52,8 @@ const Login = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
+                <Form.Group className="mb-3">
+                <p><small>Already have an account? <Link to='/register'>Register here.</Link> </small></p>
                 </Form.Group>
                 <Button style={{ width: '100%' }} variant="primary" type="submit">
                     Login
@@ -52,7 +63,7 @@ const Login = () => {
                     <FaGoogle />  Login With Google
                 </Button> <br />
                 <p className='text-center text-muted mb-0'>Or</p>
-                <Button variant="warning" size="md" style={{ width: '100%' }}>
+                <Button onClick={handleGitLogin} variant="warning" size="md" style={{ width: '100%' }}>
                     <FaGithub />  Login With GitHub
                 </Button> <br /><br />
             </Form>

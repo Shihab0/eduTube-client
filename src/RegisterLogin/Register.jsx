@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { FcReading } from 'react-icons/fc';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 import Footer from '../Shared/Footer';
 import Header from '../Shared/Header';
@@ -42,8 +43,8 @@ const Register = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
+                <Form.Group className="mb-3">
+                    <p><small>Already have an account? <Link to='/Login'>Login here.</Link> </small></p>
                 </Form.Group>
                 <Button style={{ width: '100%' }} variant="primary" type="submit">
                     Register
