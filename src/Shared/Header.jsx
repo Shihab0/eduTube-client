@@ -20,7 +20,6 @@ const Header = () => {
 
     const modeChange = () => {
         setNightMode(!nightMode);
-        }
     }
 
     const handleLogOut = () => {
