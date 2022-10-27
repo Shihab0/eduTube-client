@@ -17,3 +17,6 @@
 - Login & Registration authorization .
 - Private Route.
 - Day & Night Mode.
+
+![image](eduTube.png)
+![image](eduTube2.png)
