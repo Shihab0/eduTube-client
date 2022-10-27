@@ -38,6 +38,7 @@ const Header = () => {
                         <Nav.Link><Link className='text-decoration-none' to='/home'>Home</Link></Nav.Link>
                         <Nav.Link><Link className='text-decoration-none' to='/allCourse'>Course</Link></Nav.Link>
                         <Nav.Link><Link className='text-decoration-none' to='/blogs'>Blogs</Link></Nav.Link>
+                        <Nav.Link><Link className='text-decoration-none' to='faq'>FAQ</Link></Nav.Link>
                         {
                             nightMode ? <Nav.Link><Link onClick={modeChange} className='text-decoration-none text-white'><BsSun></BsSun> </Link></Nav.Link> : <Nav.Link><Link onClick={modeChange} className='text-decoration-none text-white'><BsMoonFill /> </Link></Nav.Link>
                         }

@@ -7,8 +7,10 @@ import { useLoaderData } from 'react-router-dom';
 import { FaBook, FaUserGraduate } from 'react-icons/fa';
 import { Button } from 'react-bootstrap';
 import Swal from 'sweetalert2';
+import ReactToPdf from './ReactToPdf';
 
 const SellCard = () => {
+
     const handleAdmit = () => {
         Swal.fire({
             position: 'center',
