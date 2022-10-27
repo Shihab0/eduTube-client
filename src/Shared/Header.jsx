@@ -2,7 +2,6 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import userPhoto from '../assest/img/user-512.webp';
 import { FcReading } from "react-icons/fc";
@@ -11,7 +10,6 @@ import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 import Image from 'react-bootstrap/Image';
 import { useState } from 'react';
-import { ThemeConsumer } from 'react-bootstrap/esm/ThemeProvider';
 
 const Header = () => {
     const [nightMode, setNightMode] = useState(false);
